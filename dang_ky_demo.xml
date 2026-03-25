@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="hp_csdl" model="hoc.phan">
+            <field name="maHocPhan">IT001</field>
+            <field name="tenMonHoc">Cơ sở dữ liệu</field>
+            <field name="soTinChi">3</field>
+        </record>
+
+        <record id="hp_python" model="hoc.phan">
+            <field name="maHocPhan">IT002</field>
+            <field name="tenMonHoc">Lập trình Python</field>
+            <field name="soTinChi">3</field>
+        </record>
+
+        <record id="hp_hqt_csdl" model="hoc.phan">
+            <field name="maHocPhan">IT003</field>
+            <field name="tenMonHoc">Hệ quản trị CSDL</field>
+            <field name="soTinChi">4</field>
+            <field name="tien_quyet_ids" eval="[(6, 0, [ref('hp_csdl')])]"/>
+        </record>
+
+        <record id="hp_erp" model="hoc.phan">
+            <field name="maHocPhan">IT004</field>
+            <field name="tenMonHoc">Phát triển hệ thống ERP</field>
+            <field name="soTinChi">5</field>
+            <field name="tien_quyet_ids" eval="[(6, 0, [ref('hp_csdl'), ref('hp_python')])]"/>
+        </record>
+
+        <record id="hp_mang" model="hoc.phan">
+            <field name="maHocPhan">IT005</field>
+            <field name="tenMonHoc">Mạng máy tính</field>
+            <field name="soTinChi">3</field>
+        </record>
+    </data>
+</openerp>

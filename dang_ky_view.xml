@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+	<!--START PHẦN VIEW CHO CÁC MODULE-->
+        <record id="view_hoc_phan_search" model="ir.ui.view">
+            <field name="name">hoc.phan.search</field>
+            <field name="model">hoc.phan</field>
+            <field name="arch" type="xml">
+                <search string="Tìm kiếm Học phần">
+                    <field name="maHocPhan"/>
+                    <field name="tenMonHoc"/>
+                </search>
+            </field>
+        </record>
+	
+	<!--View tree học phần-->
+        <record id="view_hoc_phan_tree" model="ir.ui.view">
+            <field name="name">hoc.phan.tree</field>
+            <field name="model">hoc.phan</field>
+            <field name="arch" type="xml">
+                <tree string="Danh sách Học phần">
+                    <field name="maHocPhan"/>
+                    <field name="tenMonHoc"/>
+                    <field name="soTinChi"/>
+                </tree>
+            </field>
+        </record>
+	
+	<!--View form học phần-->
+        <record id="view_hoc_phan_form" model="ir.ui.view">
+            <field name="name">hoc.phan.form</field>
+            <field name="model">hoc.phan</field>
+            <field name="arch" type="xml">
+                <form string="Thông tin Học phần" version="7.0">
+                    <sheet>
+                        <group>
+                            <field name="tenMonHoc" string="Tên môn học:"/>
+                            <field name="maHocPhan" string="Mã học phần:"/>
+                            <field name="soTinChi" string="Số tín chỉ:"/>
+                        </group>
+                        <notebook>
+                            <page string="Môn tiên quyết">
+                                <field name="tien_quyet_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    
+	<!--View form đăng ký-->
+        <record id="view_dang_ky_form" model="ir.ui.view">
+            <field name="name">dang.ky.form</field>
+            <field name="model">dang.ky</field>
+            <field name="arch" type="xml">
+                <form string="Phiếu đăng ký" version="7.0">
+                    <header>
+                        <button name="action_confirm" string="Xác nhận" type="object" states="0" class="oe_highlight"/>
+                        <field name="trangThai" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="maDangKy" string="Mã đăng ký:"/>
+                            <field name="user_id" string="Người đăng ký:"/>
+                            <field name="ngayDangKy"/>
+                        </group>
+                        <notebook>
+                            <page string="Lớp học đã chọn">
+                                <field name="lop_hoc_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+		
+		
+	<!--Code View cho module lớp học của Phát here-->
+	
+		
+<!--END PHẦN VIEW CHO CÁC MODULE-->
+
+<!--START SET ACTION CHO CÁC MENUITEM-->
+	<!--Action cho module tạo Học phần-->
+        <record id="action_hoc_phan" model="ir.actions.act_window">
+            <field name="name">Thông tin Học phần</field>
+            <field name="res_model">hoc.phan</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+	
+	<!--Code Action tính năng đăng ký lớp học của Phát here-->
+	
+<!--END SET ACTION CHO CÁC MENUITEM-->
+
+
+<!--PHẦN CODE CHO BẢNG MENU TRÁI -->
+
+
+	<!--Nghĩa-->
+	<!--Chức năng học phần xem và chọn-->
+	
+	<record id="action_show_hoc_phan" model="ir.actions.act_window">
+    <field name="name">Danh sách các học phần</field>
+    <field name="res_model">hoc.phan</field>
+    <field name="view_mode">tree,form</field>
+</record>
+		
+	<!--Chức năng đăng ký học phần chi tiết-->
+        <record id="action_dang_ky" model="ir.actions.act_window">
+            <field name="name">Thông tin đăng ký chi tiết</field>
+            <field name="res_model">dang.ky</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+		
+	<!--Phát-->
+	<!--Tính năng lớp học phần-->
+	<!--Code MenuItem cho module lớp học của Phát here-->
+	
+		
+    </data>
+</openerp>

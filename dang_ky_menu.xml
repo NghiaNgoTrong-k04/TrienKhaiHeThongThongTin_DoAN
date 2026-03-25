@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <menuitem id="menu_hoc_vu_root" name="Quản Lý Học Vụ" icon="STOCK_JUSTIFY_FILL"/>
+        
+	<!--Module Quản lý danh mục học phần --> 
+	<!--Ngô Trọng Nghĩa-->
+        <menuitem id="menu_category_hoc_vu" name="Tính năng học phần" parent="menu_hoc_vu_root"/>
+        <menuitem action="action_hoc_phan" id="menu_hoc_phan_item" parent="menu_category_hoc_vu" />
+        <menuitem action="action_show_hoc_phan" id="menu_ds_hoc_phan" parent="menu_category_hoc_vu" />
+
+	<!--Module Quản lý lớp học phần -->
+	<!--Của Phát-->
+	<!--Your code here-->
+	
+
+		
+	<!--Module Quản lý tính năng đăng ký-->
+	<!--Ngô Trọng Nghĩa-->
+		<menuitem id="menu_category_dang_ky" name="Tính năng đăng ký" parent="menu_hoc_vu_root"/>
+		<menuitem action="action_dang_ky" id="menu_dang_ky_item" parent="menu_category_dang_ky" />
+
+
+    </data>
+</openerp>
