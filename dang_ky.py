@@ -3,6 +3,7 @@ from openerp.osv import fields, osv
 #1. TABLE HOC PHAN
 class hoc_phan(osv.osv):
     _name='hoc.phan'
+    _rec_name = 'tenMonHoc' 
     _columns={
     'maHocPhan':fields.char('Ma Hoc Phan',size=45,required = True),
     'tenMonHoc':fields.char('Ten Mon Hoc',size = 45,required= True),
@@ -35,7 +36,14 @@ class dang_ky(osv.osv):
     'user_id':fields.many2one('res.users','Sinh Vien Dang Ky'), #Connect voi tk he thong
     'trangThai':fields.selection([('0','Nhap'),('1','Xac Nhan')],'Trang Thai'),
     'lop_hoc_ids':fields.many2many('lop.hoc','dang_ky_chi_tiet_rel','dk_id','lop_id','Danh Sach Lop Chon'),
+    'trangThai': fields.selection([('0', 'Nhap'), ('1', 'Xac Nhan')], 'Trạng Thái'),# Phát thêm vào 
     }
+
+    # ĐOẠN TÔI THÊM VÀO 
+    def action_confirm(self, cr, uid, ids, context=None):
+        """Hàm này sẽ chạy khi bấm nút Xác nhận"""
+        # Cập nhật trường trangThai thành '1' (Xác nhận) cho bản ghi hiện tại
+        return self.write(cr, uid, ids, {'trangThai': '1'}, context=context)
     
     _defaults = {
     'trangThai':'0', #Mac dinh la Nhap
