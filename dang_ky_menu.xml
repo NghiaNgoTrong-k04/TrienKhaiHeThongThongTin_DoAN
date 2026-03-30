@@ -11,6 +11,10 @@
 
 	<!--Module Quản lý lớp học phần -->
 	<!--Của Phát-->
+	<!-- Module Quản lý lớp học phần - Phát -->
+        <menuitem id="menu_category_lop_hoc" name="Tính năng lớp học phần" parent="menu_hoc_vu_root" sequence="2"/>
+        <menuitem action="action_lop_hoc" id="menu_lop_hoc_item_detail" name="Thông tin chi tiết" parent="menu_category_lop_hoc" />
+        <menuitem action="action_lop_hoc" id="menu_lop_hoc_ds" name="Danh sách học phần" parent="menu_category_lop_hoc" />
 	<!--Your code here-->
 	
 

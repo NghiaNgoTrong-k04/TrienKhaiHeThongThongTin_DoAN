@@ -56,8 +56,9 @@
             <field name="arch" type="xml">
                 <form string="Phiếu đăng ký" version="7.0">
                     <header>
-                        <button name="action_confirm" string="Xác nhận" type="object" states="0" class="oe_highlight"/>
-                        <field name="trangThai" widget="statusbar"/>
+                        <button name="action_confirm" string="Xác nhận" type="object" 
+                            attrs="{'invisible': [('trangThai', '!=', '0')]}" class="oe_highlight"/>
+                            <field name="trangThai" widget="statusbar"/>
                     </header>
                     <sheet>
                         <group>
@@ -77,7 +78,54 @@
 		
 		
 	<!--Code View cho module lớp học của Phát here-->
-	
+	<!-- View Tree Lớp học phần -->
+        <record id="view_lop_hoc_tree" model="ir.ui.view">
+            <field name="name">lop.hoc.tree</field>
+            <field name="model">lop.hoc</field>
+            <field name="arch" type="xml">
+                <tree string="Thông tin các lớp học phần">
+                    <field name="maLop" string="Mã lớp học phần"/>
+                    <field name="hoc_phan_id" string="Tên học phần"/>
+                    <field name="giangVien" string="Giảng viên"/>
+                    <field name="ngayBatDau" string="Ngày bắt đầu"/>
+                    <field name="ngayKetThuc" string="Ngày kết thúc"/>
+                    <field name="ghiChu" string="Thông tin - Địa điểm"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- View Form Lớp học phần -->
+        <record id="view_lop_hoc_form" model="ir.ui.view">
+            <field name="name">lop.hoc.form</field>
+            <field name="model">lop.hoc</field>
+            <field name="arch" type="xml">
+                <form string="Chi tiết lớp học phần" version="7.0">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="maLop" string="Mã lớp học phần" class="oe_edit_only"/>
+                            <h1>
+                                <field name="maLop" placeholder="VD: COMP001-LTNC"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="hoc_phan_id" string="Tên học phần" options="{'no_create': True}"/>
+                                <field name="giangVien" string="Giảng viên"/>
+                            </group>
+                            <group>
+                                <field name="ngayBatDau" string="Ngày bắt đầu"/>
+                                <field name="ngayKetThuc" string="Ngày kết thúc"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Thông tin">
+                                <field name="ghiChu" placeholder="Ghi chú thông tin phòng học, lịch học..."/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 		
 <!--END PHẦN VIEW CHO CÁC MODULE-->
 
@@ -90,6 +138,13 @@
         </record>
 	
 	<!--Code Action tính năng đăng ký lớp học của Phát here-->
+    <!-- Action cho module Lớp học phần -->
+        <record id="action_lop_hoc" model="ir.actions.act_window">
+            <field name="name">Thông tin các lớp học phần</field>
+            <field name="res_model">lop.hoc</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
 	
 <!--END SET ACTION CHO CÁC MENUITEM-->
 
